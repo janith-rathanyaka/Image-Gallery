@@ -4,7 +4,7 @@ import './App.css';
 import Header from './components/Header';
 import Search from './components/Search';
 
-
+const UNSPLASH = process.env.REACT_APP_UNSPLASH_KEY;
 
 
 function App() {
@@ -13,8 +13,17 @@ function App() {
   const handleSearchSubmit = (e) =>{
     e.preventDefault()
     console.log(e.target[0].value)
+    fetch(`https://api.unsplash.com/photos/random/?query=${word}&client_id=${UNSPLASH}`)
+    .then((res)=>res.json())
+    .then((data)=>{
+      console.log(data)
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+    .setWord('');
   }
-  console.log(word)
+  console.log(UNSPLASH)
   return (
     <div className="App">
      <Header title="Image Gallery" />

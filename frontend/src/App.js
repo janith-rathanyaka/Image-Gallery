@@ -31,6 +31,11 @@ function App() {
      setWord('');
   };
   console.log(UNSPLASH);
+  
+   const handleDeleteImage = (id) =>{
+       setImages(images.filter((image)=> image.id !==id))
+   }
+
   return (
     <div className="App">
       <Header title="Image Gallery" />
@@ -40,7 +45,7 @@ function App() {
             {images.map((image,i)=> (
                   
                    <Col key={i} className="pb-3">
-                     <ImageCard  image={image} />
+                     <ImageCard  image={image}  deleteImage={handleDeleteImage } />
                    </Col>
                   ))}
             </Row>

@@ -9,6 +9,8 @@ const UNSPLASH = process.env.REACT_APP_UNSPLASH_KEY;
 function App() {
   const [word, setWord] = useState("");
   const [images,setImages] = useState([]);
+  
+  console.log(images); 
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -18,13 +20,13 @@ function App() {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+       
         setImages([data,...images])
       })
       .catch((err) => {
         console.log(err);
       })
-      .setWord("");
+     setWord('');
   };
   console.log(UNSPLASH);
   return (
